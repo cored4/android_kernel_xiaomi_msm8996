@@ -728,7 +728,7 @@
 #define TSENS_DEBUG_OFFSET_WORD3	0xc
 #define TSENS_DEBUG_OFFSET_ROW		0x10
 #define TSENS_DEBUG_DECIDEGC		-950
-#define TSENS_DEBUG_CYCLE_MS		64
+#define TSENS_DEBUG_CYCLE_MS		200
 #define TSENS_DEBUG_POLL_MS		200
 #define TSENS_DEBUG_BUS_ID2_MIN_CYCLE	50
 #define TSENS_DEBUG_BUS_ID2_MAX_CYCLE	51
@@ -2239,6 +2239,7 @@ debug_start:
 	}
 
 re_schedule:
+
 	resched_ms = tmdev->tsens_critical_poll_state
 		? TSENS_DEBUG_POLL_MS : tsens_sec_to_msec_value;
 	queue_delayed_work(tmdev->tsens_critical_wq,
@@ -5780,7 +5781,6 @@ static int tsens_tm_probe(struct platform_device *pdev)
 	spin_lock_init(&tmdev->tsens_crit_lock);
 	spin_lock_init(&tmdev->tsens_upp_low_lock);
 	spin_lock_init(&tmdev->tsens_debug_lock);
-
 
 	tmdev->tsens_critical_poll_state = false;
 	tmdev->is_ready = true;
