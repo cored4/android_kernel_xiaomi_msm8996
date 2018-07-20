@@ -231,7 +231,7 @@ static ssize_t gentle_fair_sleepers_store(struct kobject *kobj, struct kobj_attr
 }
 
 static struct kobj_attribute gentle_fair_sleepers_attribute =
-__ATTR(gentle_fair_sleepers, 0666, gentle_fair_sleepers_show, gentle_fair_sleepers_store);
+__ATTR(gentle_fair_sleepers, 0664, gentle_fair_sleepers_show, gentle_fair_sleepers_store);
 
 static struct attribute *gentle_fair_sleepers_attrs[] = {
 &gentle_fair_sleepers_attribute.attr,
